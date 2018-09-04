@@ -1,7 +1,7 @@
 # AiMULA-Getting-Started-Examples
 Simple examples of three (classic) reinforcement-learing games that can be trained using the Unity Ml-Agents Toolbox: Catch Ball, Wall Pong and Pong
 
-<img src="media/wallpong_demo.gif" width="240" height="180" />
+<img src="media/wallpong_demo.gif" width="240" height="180" /> <img src="media/wallpong_demo.gif" width="240" height="180" /> <img src="media/wallpong_demo.gif" width="240" height="180" />
 
 
 # Background
@@ -23,7 +23,7 @@ The Unity ML-Agents toolkit, which can be download from Github at: https://githu
 
 # Installation, Setup and Training
 Please visit http://adventuresinunitymlagents.com/getting-started/ for realted tuorial about:
-- installing the ml-agents toolkit inot unity to test and modify the games included here.
+- installing the ml-agents toolkit into unity to test and modify the games included here.
 - setting up the unity development environment before importing the unity package included here.
 - import the ml-agents components in to a unity project.
 - changing the default unity project settings to train and test ml-agents.
