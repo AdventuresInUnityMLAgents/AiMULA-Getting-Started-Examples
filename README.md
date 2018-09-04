@@ -1,7 +1,7 @@
 # AiMULA-Getting-Started-Examples
 Simple examples of three (classic) reinforcement-learing games that can be trained using the Unity Ml-Agents Toolbox: Catch Ball, Wall Pong and Pong
 
-<img src="media/wallpong_demo.gif" width="480" height="360" />
+<img src="media/wallpong_demo.gif" width="240" height="180" />
 
 
 # Background
