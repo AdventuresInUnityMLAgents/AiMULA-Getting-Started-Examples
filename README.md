@@ -3,7 +3,7 @@ Simple examples of three (classic) reinforcement-learing games that can be train
 
 # Wall Pong
 <video width="320" height="240" controls>
-  <source src="wallpong_demo.mp4" type="video/mp4">
+  <source src="videos/wallpong_demo.mp4">
 </video>
 
 # Catch Ball
