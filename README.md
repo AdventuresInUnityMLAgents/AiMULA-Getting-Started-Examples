@@ -39,18 +39,18 @@ Open Unity and from the project selector click the +NEW project button. You can 
 ### Import the ML-Agents Unity Components
 After the main Unity editor window opens, import the necessary Unity ML-Agents package components into the project. This can be done in several ways. The easiest way is to:
  - open up a file browser/explorer window on your computer, locate the directory where you downloaded, saved and installed the Unity ML-Agents toolkit.
- - navigate to the …\ml-agents\unity-environment\Assets\ML-Agents sub-folder 
+ - navigate to the **…\ml-agents\unity-environment\Assets\ML-Agents sub-folder** 
  - drag/copy the ML-Agents folder (with all of its content and sub-folders) into the Assets folder in the Unity Project Window (don’t worry if you get some error messages in the Unity console window, those will be resolved shortly).
 
 NOTE: you can delete the Examples sub-folder after everything has been imported, but feel free to leave it in if you plan on exploring the Unity ML-Agents examples that come with the toolkit.
 
 ### Import the AiUMLA Getting Started Examples Package
 - Clone or download this AiMULA getting Started GitHub repository.
- - Import the aiulmagettingstartedexamples.package into the unity project by going to the main menu bar and selecting Assets -> Import Package -> Custom Package.
+ - Import the aiulmagettingstartedexamples.package into the unity project by going to the main menu bar and selecting **Assets -> Import Package -> Custom Package**.
  - Browse to where you download and saved the aiulmagettingstartedexamples.package and click Import.
 
 ### Change the Default Project Settings
-Go to the main menu bar and select Edit -> Project Settings -> Player. The Player Settings panel should open up in the Unity Inspector Window (on the right of the main Unity window if you are using the    default window layout). Make the following changes in the Resolution and Presentation panel and the Other Settings panel:
+Go to the main menu bar and select **Edit -> Project Settings -> Player**. The Player Settings panel should open up in the Unity Inspector Window (on the right of the main Unity window if you are using the default window layout). Make the following changes in the Resolution and Presentation panel and the Other Settings panel:
 
 #### Resolution and Presentation:
  - Set Fullscreen Mode to “Windowed”. In older versions of Unity turn Default is Full Screen off (unchecked).
@@ -58,8 +58,8 @@ Go to the main menu bar and select Edit -> Project Settings -> Player. The Playe
 
 #### Other Settings:
  - Find the Configuration section
- - For Scripting Runtime Version select Experimental ( .NET 4.x Equivalent or .NET 4.6 Equivalent). Note the Unity Editor may ask to reload, selected yes and after the Editor reloads, navigate back to Other Settings panel via Edit -> Project Settings -> Player.
- - In the input box under Scripting Define Symbols type in the flag ENABLE_TENSORFLOW. Make sure you hit enter on your keyboard after typing in the flag (again, don’t worry if you get some error messages popping up in the Unity console window).
+ - For Scripting Runtime Version select **Experimental ( .NET 4.x Equivalent or .NET 4.6 Equivalent)**. Note the Unity Editor may ask to reload, selected yes and after the Editor reloads, navigate back to Other Settings panel via Edit -> Project Settings -> Player.
+ - In the input box under Scripting Define Symbols type in the flag **ENABLE_TENSORFLOW**. Make sure you hit enter on your keyboard after typing in the flag (again, don’t worry if you get some error messages popping up in the Unity console window).
  - After making the above changes, make sure you save the project: File -> Save Project
 
 ### Install the TensorFlow C# Unity Plugin
@@ -70,7 +70,8 @@ Make sure you save the project: File -> Save Project
 ## Play the Example Games Yourself (as a player)
  - From the project Window, open up the corresponding game scene you wish to play (e.g., CatchBall, WallPong, Pong).
  - Expand the Academy oject in the Hierarchy Window.
- - Select the correspdong Brain object (e.g., CatchBallBrain, WallPongBrain, PongBrain) and in the Inspectory Panel set the Brain Type = Player. 
+ - Select the correspdong Brain object (e.g., CatchBallBrain, WallPongBrain, PongBrain).
+ - In the Inspectory Panel set the **Brain Type = Player**. 
  - Note the specified keyboard inputs for game play, which should be listed below Barin Type (Player) in the Inspector Panel.
  - Press the game play button at the top of the Unity Editor and then when the game starts in the Game Window, test the game by playing a few rounds.
 
@@ -91,7 +92,49 @@ The ML-Agents trainer_config.yaml actually has a default set of hyperparameters 
  - At the top of the file you will find the default hyperparameter list.
  - Either directly under this default list or at the end of the file create copy and past in the CatchBall, WallPong and Pong hyperparameters setttings in the trainer_config.yaml file included in this AiMULA getting Started GitHub repository
  - Save the file.
+ 
+### Set the Brain Type = External (Essential for Agent Training)
+ - From the project Window, open up the corresponding game scene you wish to play (e.g., CatchBall, WallPong, Pong).
+ - Expand the Academy oject in the Hierarchy Window.
+ - Select the correspdong Brain object (e.g., CatchBallBrain, WallPongBrain, PongBrain).
+ - In the Inspectory Panel and set the **Brain Type = External**. 
+ 
+### Executing the Training Process
+To run the PPO training processes, we need to run the ML-Agents training program learn.py from a command prompt. Here we assume that you have installed the ml-agents toolkit in a virtual (conda) environment called “ml-agents” using Anaconda. Although you can run the training process using a compiled (standalone) Unity application, which is beneficial if you want to run multiple training instances simultaneously, for the sake of simplicity here we will detail how to complete the training process by playing the game directly in the Unity Editor.
 
+#### Open up an Anaconda Prompt.
+ - If you installed ML-Agents in a virtual environment, activate that virtual (conda) environment; e.g., enter the command: conda activate ml-agents
+ - Change the directory to the python sub-directory of the ml-agents directory. e.g., enter the command: cd yourpath/ml-agents/python
+ - To start the learning/training process, call the ML-Agents learn.py script.
+ - Enter the following command to start the training process: **python learn.py –run-id=gamenameTest1 –train**  and press ENTER.
+ - Note that the –train command specifies that you are training an agent. The —run-id command specifies a a unique identifier for the Tensorflow checkpoint summary and model files generated during training. you can replace "gamenameTest1" with whatever run-id you want.
+
+ - After the training settinsg appear in the Anaconda prompt window, the following line should appear: **Start training by pressing the Play button in the Unity Editor**. 
+ - Go back the Unity Editor and press the Play button.
+ - Once the game starts you should see the Agent Paddle(s) in each game begin to learn!
+ - Agent progress, that is, the Agent’s average score at each summary frequency update (i.e., every 2000 steps), will be displayed in the Anaconda prompt.
+- Agents should learn to play each game within 20,000 to 70,000 steps.
+
+## Importing and Testing a Trained Model
+You can test a trained model either using the trained models provided in the TF-Models folder in the , or by importing your own model post training. Model files are "*.bytes*" files are correspond to a Tensorflow Graph file and play the games using the state-action policy specified by the model.
+
+### Using the Provided Model (bytes) Files
+ - From the project Window, open up the corresponding game scene you wish to play (e.g., CatchBall, WallPong, Pong).
+ - Expand the Academy oject in the Hierarchy Window.
+ - Select the correspdong Brain object (e.g., CatchBallBrain, WallPongBrain, PongBrain).
+ - In the Inspectory Panel and set the **Brain Type = Internal**. 
+ - Drag the corresponding model bytes file (e.g., catchball.bytes, wallpong.bytes, pong.bytes) from the TF_Models folder in the Unity Project Window into the Graph Model input field in the Brain (script) component in the Inspector panel.
+ - Save the scene (File -> Save Scene).
+ - Save the project (File -> Save Project).
+ - Press the Play button at the top of the Unity Editor and watch your agent play.
+ - If everything went according to plan, your Paddle Agent should never miss a ball.
+ 
+### Using the Your Own Trained Model (bytes) Files
+ - Open up an file explorer window (a finder window on a Mac) and navigate to where you saved the ML-Agents toolkit.
+ - In the yourpath/ml-agents/python/models/ you should find a directory (folder) with the run-id name you specified when you executed training. For example, if you set the run-id=wpT1, the folder will be named wpT1.
+ - Open the directory (folder) and find the bytes file with the corresponding run-id name at the end of the filename. Because we trained the agent directly in the Unity Editor, the file should have a name like “editor_Academy_wpT1.bytes”.
+ - Copy or drag the bytes file into the TF_Files folder in the Unity Editor’s Project Window.
+ - Complete the steps listed above under "Using the Provided Model Files"
 
 # Detailed Installation, Setup and Training Instructions
 Please visit http://adventuresinunitymlagents.com/getting-started/ for realted tuorial about:
