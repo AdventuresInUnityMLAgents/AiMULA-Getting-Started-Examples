@@ -50,18 +50,17 @@ NOTE: you can delete the Examples sub-folder after everything has been imported,
  - Browse to where you download and saved the aiulmagettingstartedexamples.package and click Import.
 
 ### Change the Default Project Settings
-Go to the main menu bar and select Edit -> Project Settings -> Player. 
-The Player Settings panel should open up in the Unity Inspector Window (on the right of the main Unity window if you are using the    default window layout). Make the following changes in the Resolution and Presentation panel and the Other Settings panel:
+Go to the main menu bar and select Edit -> Project Settings -> Player. The Player Settings panel should open up in the Unity Inspector Window (on the right of the main Unity window if you are using the    default window layout). Make the following changes in the Resolution and Presentation panel and the Other Settings panel:
 
 #### Resolution and Presentation:
-Set Fullscreen Mode to “Windowed”. In older versions of Unity turn Default is Full Screen off (unchecked).
-Turn Run in Background on (checked) the Display Resolution Dialog should be set to “Disabled”
+ - Set Fullscreen Mode to “Windowed”. In older versions of Unity turn Default is Full Screen off (unchecked).
+ - Turn Run in Background on (checked) the Display Resolution Dialog should be set to “Disabled”
 
 #### Other Settings:
-Find the Configuration section
-For Scripting Runtime Version select Experimental ( .NET 4.x Equivalent or .NET 4.6 Equivalent). Note the Unity Editor may ask to reload, selected yes and after the Editor reloads, navigate back to Other Settings panel via Edit -> Project Settings -> Player.
-In the input box under Scripting Define Symbols type in the flag ENABLE_TENSORFLOW. Make sure you hit enter on your keyboard after typing in the flag (again, don’t worry if you get some error messages popping up in the Unity console window).
-After making the above changes, make sure you save the project: File -> Save Project
+ - Find the Configuration section
+ - For Scripting Runtime Version select Experimental ( .NET 4.x Equivalent or .NET 4.6 Equivalent). Note the Unity Editor may ask to reload, selected yes and after the Editor reloads, navigate back to Other Settings panel via Edit -> Project Settings -> Player.
+ - In the input box under Scripting Define Symbols type in the flag ENABLE_TENSORFLOW. Make sure you hit enter on your keyboard after typing in the flag (again, don’t worry if you get some error messages popping up in the Unity console window).
+ - After making the above changes, make sure you save the project: File -> Save Project
 
 ### Install the TensorFlow C# Unity Plugin
 The Tensorflow C# plugin can be downloaded here [https://s3.amazonaws.com/unity-ml-agents/0.4/TFSharpPlugin.unitypackage] and is necessary to run and test your agents after training. To install (import) the plugin, simply double click on the file after it has downloaded and you have uncompressed/unzipped it. Once the Unity import file window opens up, click the Import button. 
@@ -69,16 +68,16 @@ The Tensorflow C# plugin can be downloaded here [https://s3.amazonaws.com/unity-
 Make sure you save the project: File -> Save Project
 
 ## Play the Example Games Yourself (as a player)
-From the project Window, open up the corresponding game scene you wish to play (e.g., CatchBall, WallPong, Pong).
-Expand the Academy oject in the Hierarchy Window.
-Select the correspdong Brain object (e.g., CatchBallBrain, WallPongBrain, PongBrain) and in the Inspectory Panel set the Brain Type = Player. 
-Note the specified keyboard inputs for game play, which should be listed below Barin Type (Player) in the Inspector Panel.
-Press the game play button at the top of the Unity Editor and then when the game starts in the Game Window, test the game by playing a few rounds.
+ - From the project Window, open up the corresponding game scene you wish to play (e.g., CatchBall, WallPong, Pong).
+ - Expand the Academy oject in the Hierarchy Window.
+ - Select the correspdong Brain object (e.g., CatchBallBrain, WallPongBrain, PongBrain) and in the Inspectory Panel set the Brain Type = Player. 
+ - Note the specified keyboard inputs for game play, which should be listed below Barin Type (Player) in the Inspector Panel.
+ - Press the game play button at the top of the Unity Editor and then when the game starts in the Game Window, test the game by playing a few rounds.
 
 ## Agent Training Using the ML-Agents PPO Algorithm
 The PPO process that comes with the ML-Agents toolkit can be used to train agents to play each game. Proximal Policy Optimization or PPO is a state-of-the-art RL algorithm that uses an artificial neural network to approximate the optimal state-action policy. It is the default RL method for ML-Agents (as well as openAI) and can be employed for RL tasks that involve discrete or continuous action spaces. If you are interested in learning more about PPO please visit:
-https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-PPO.md
-https://blog.openai.com/openai-baselines-ppo/
+ - https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Training-PPO.md
+ - https://blog.openai.com/openai-baselines-ppo/
 
 For ML-Agents, the PPO algorithm is implemented using Tensorflow. The learning process is run via the Python API that can communicate with both a compiled Unity application or the Unity Editor. This Python <-> Unity process means that you can use the provided PPO algorithm for RL, as well as write your own custom RL or ML algorithms.
 
@@ -86,13 +85,12 @@ For ML-Agents, the PPO algorithm is implemented using Tensorflow. The learning p
 Before executing the ML-Agents PPO training process, we first need to set the training hyperparameters in the trainer_config.yaml file. These hyperparameters include the size (number of nodes and layers) of the artificial neural network that will be employed for training, the size of the memory buffer used for training, the training batch size, the learning rate, the max number of training steps, etc. A detailed description of the hyperparameters that can be set in the ML-Agents trainer_config.yaml file can be found here: PPO Hyperparameters.
 
 The ML-Agents trainer_config.yaml actually has a default set of hyperparameters than can be used ‘out-of-the-box’ so to speak, but it is always better to create your own brain/agent specific set of hyperparameters within the trainer_config.yaml file and modify these rather than the default settings to increase or stabilize training performance. To create a set of WallPongBrain hyperparameters:
-
-Open up a file explorer window (a finder window on Mac) and navigate to where you saved the ML-Agents toolkit.
-Find the trainer_config.yaml file in the yourpath/ml-agents/python folder.
-Open the trainer_config.yaml file using a script and text editor (e.g., Visual Studio).
-At the top of the file you will find the default hyperparameter list.
-Either directly under this default list or at the end of the file create copy and past in the CatchBall, WallPong and Pong hyperparameters setttings in the trainer_config.yaml file included in this AiMULA getting Started GitHub repository
-Save the file.
+ - Open up a file explorer window (a finder window on Mac) and navigate to where you saved the ML-Agents toolkit.
+ - Find the trainer_config.yaml file in the yourpath/ml-agents/python folder.
+ - Open the trainer_config.yaml file using a script and text editor (e.g., Visual Studio).
+ - At the top of the file you will find the default hyperparameter list.
+ - Either directly under this default list or at the end of the file create copy and past in the CatchBall, WallPong and Pong hyperparameters setttings in the trainer_config.yaml file included in this AiMULA getting Started GitHub repository
+ - Save the file.
 
 
 # Detailed Installation, Setup and Training Instructions
