@@ -26,8 +26,8 @@ The Unity ML-Agents toolkit, which can be download from Github at: https://githu
 Here we assume you have Unity and the Unity ML-Agents toolkit installed on your machine (these examples we created using Unity 2018.2.1f1 on a Windows 10 machine and ML-Agents Beta 0.4), as well as Anaconda with Python 3.6
 
 For instructions on how to install the Unity ML-Agents toolkit using Anaconda:
-Windows users should go here: https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Installation-Windows.md
-Mac/Unix users should go here: https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Installation.md
+ - Windows users should go here: https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Installation-Windows.md
+ - Mac/Unix users should go here: https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Installation.md
 
 If you haven’t installed the Unity ML-Agents toolkit, we highly recommend you install the toolkit and the required dependencies within a virtual environment. For instance, create a conda environment called “ml-agents” and install everything needed to run Unity ML-Agents within that virtual environment. For instructions on how to create a virtual (conda) environment go here: https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/20/conda/
 
@@ -37,14 +37,17 @@ NOTE: We recommend that you DO NOT install the ML-Agents toolkit with GPU suppor
 Open Unity and from the project selector click the +NEW project button. You can call your project whatever you like (e.g, “Wall Pong” or “My First ML-Agents Game”). After you enter your project name, make sure the 3D radio button is selected and click Create Project.
 
 ### Import the ML-Agents Unity Components
-After the main Unity editor window opens, import the necessary Unity ML-Agents package components into the project. This can be done in several ways. The easiest way is to open up a file browser/explorer window on your computer, locate the directory where you downloaded, saved and installed the Unity ML-Agents toolkit, navigate to the …\ml-agents\unity-environment\Assets\ML-Agents sub-folder and drag/copy the ML-Agents folder (with all of its content and sub-folders) into the Assets folder in the Unity Project Window (don’t worry if you get some error messages in the Unity console window, those will be resolved shortly).
+After the main Unity editor window opens, import the necessary Unity ML-Agents package components into the project. This can be done in several ways. The easiest way is to:
+ - open up a file browser/explorer window on your computer, locate the directory where you downloaded, saved and installed the Unity ML-Agents toolkit.
+ - navigate to the …\ml-agents\unity-environment\Assets\ML-Agents sub-folder 
+ - drag/copy the ML-Agents folder (with all of its content and sub-folders) into the Assets folder in the Unity Project Window (don’t worry if you get some error messages in the Unity console window, those will be resolved shortly).
 
 NOTE: you can delete the Examples sub-folder after everything has been imported, but feel free to leave it in if you plan on exploring the Unity ML-Agents examples that come with the toolkit.
 
 ### Import the AiUMLA Getting Started Examples Package
-Clone or download this AiMULA getting Started GitHub repository.
-To import the aiulmagettingstartedexamples.package into the unity project, go to the main menu bar and selecting Assets -> Import Package -> Custom Package.
-Browse to where you download and saved the aiulmagettingstartedexamples.package and click Import.
+- Clone or download this AiMULA getting Started GitHub repository.
+ - Import the aiulmagettingstartedexamples.package into the unity project by going to the main menu bar and selecting Assets -> Import Package -> Custom Package.
+ - Browse to where you download and saved the aiulmagettingstartedexamples.package and click Import.
 
 ### Change the Default Project Settings
 Go to the main menu bar and select Edit -> Project Settings -> Player. 
