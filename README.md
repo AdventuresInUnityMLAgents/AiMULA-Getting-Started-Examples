@@ -15,7 +15,7 @@ http://adventuresinunitymlagents.com/getting-started/
 ## Requirements
 A PC, MAC or Unix computer with a fast CPU, good graphics card and a decent amount of memory. A CUDA compatible GPU (graphics card) is not necessary for these examples, as they use vector based state observations (i..e, they do not learn from pixel data).
 
-The latest version of Unity3d. The Personal addition of Unity is free and can be downloaded from here: https://unity3d.com/unity
+The latest version of Unity3d (the AiMULA_GettingStartedExamples.unitypackage requires Unity 2018.2.1f1 or above; package prefabs are not backwards compatable). The Personal addition of Unity is free and can be downloaded from here: https://unity3d.com/unity
 
 Python 3. These Unity games were tested using Python 3.6 with Anaconda. Instructions how how to download Python and Anaconda can be found here: https://www.anaconda.com/download/.
 
