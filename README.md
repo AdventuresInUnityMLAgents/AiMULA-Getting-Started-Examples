@@ -23,7 +23,7 @@ The Unity ML-Agents toolkit, which can be download from Github at: https://githu
 
 # Quick Setup and Training Guide
 ## Installation
-Here we assume you have Unity and the Unity ML-Agents toolkit installed on your machine (these examples we created using Unity 2018.2.1f1 on a Windows 10 machine and ML-Agents Beta 0.4), as well as Anaconda with Python 3.6
+Here we assume you have Unity and the Unity ML-Agents toolkit installed on your machine (these examples we created using Unity 2018.2.1f1 on a Windows 10 machine and ML-Agents Beta v0.5), as well as Anaconda with Python 3.6
 
 For instructions on how to install the Unity ML-Agents toolkit using Anaconda:
  - Windows users should go here: https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Installation-Windows.md
@@ -34,12 +34,12 @@ If you haven’t installed the Unity ML-Agents toolkit, we highly recommend you 
 NOTE: We recommend that you DO NOT install the ML-Agents toolkit with GPU support unless you are absolutely sure you are going to be training your agents using image/pixel data. In most cases, particularly when first using the toolkit, your agents will be trained using vector data (i.e., arrays of position and velocity data specifying the location and movement direction of task/game relevant environmental objects and agents), which is typically processed faster using your CPU. If you do want to use your GPU(s) for training, then we recommend you install the toolkit twice, once for CPU based training and then again in a separate virtual environment for GPU based training (i.e., called “ml-agents-gpu”). This means you can easily switch between CPU and GPU based training depending on your needs.
 
 ## Setting Up The Unity Development Environment
-Open Unity and from the project selector click the +NEW project button. You can call your project whatever you like (e.g, “Wall Pong” or “My First ML-Agents Game”). After you enter your project name, make sure the 3D radio button is selected and click Create Project.
+Open Unity and from the project selector click the +NEW project button. You can call your project whatever you like (e.g, “AiUMLA Games” or “My First ML-Agents Games”). After you enter your project name, make sure the 3D radio button is selected and click Create Project.
 
 ### Import the ML-Agents Unity Components
 After the main Unity editor window opens, import the necessary Unity ML-Agents package components into the project. This can be done in several ways. The easiest way is to:
  - open up a file browser/explorer window on your computer, locate the directory where you downloaded, saved and installed the Unity ML-Agents toolkit.
- - navigate to the **…\ml-agents\unity-environment\Assets\ML-Agents sub-folder** 
+ - navigate to the **…\ml-agents\UnitySDK\Assets\ML-Agents sub-folder** 
  - drag/copy the ML-Agents folder (with all of its content and sub-folders) into the Assets folder in the Unity Project Window (don’t worry if you get some error messages in the Unity console window, those will be resolved shortly).
 
 NOTE: you can delete the Examples sub-folder after everything has been imported, but feel free to leave it in if you plan on exploring the Unity ML-Agents examples that come with the toolkit.
@@ -83,15 +83,9 @@ The PPO process that comes with the ML-Agents toolkit can be used to train agent
 For ML-Agents, the PPO algorithm is implemented using Tensorflow. The learning process is run via the Python API that can communicate with both a compiled Unity application or the Unity Editor. This Python <-> Unity process means that you can use the provided PPO algorithm for RL, as well as write your own custom RL or ML algorithms.
 
 ### Setting the Training Hyperparameters
-Before executing the ML-Agents PPO training process, we first need to set the training hyperparameters in the trainer_config.yaml file. These hyperparameters include the size (number of nodes and layers) of the artificial neural network that will be employed for training, the size of the memory buffer used for training, the training batch size, the learning rate, the max number of training steps, etc. A detailed description of the hyperparameters that can be set in the ML-Agents trainer_config.yaml file can be found here: PPO Hyperparameters.
+Before executing the ML-Agents PPO training process, we first need to either (i) set the training hyperparameters in the trainer_config.yaml file or (ii) copy/move the aiumla_config.yaml file that comes with this repository into the `...mlagent/config/` directory. These hyperparameters include the size (number of nodes and layers) of the artificial neural network that will be employed for training, the size of the memory buffer used for training, the training batch size, the learning rate, the max number of training steps, etc. A detailed description of the hyperparameters that can be set in the ML-Agents trainer_config.yaml file can be found here: PPO Hyperparameters.
 
-The ML-Agents trainer_config.yaml actually has a default set of hyperparameters than can be used ‘out-of-the-box’ so to speak, but it is always better to create your own brain/agent specific set of hyperparameters within the trainer_config.yaml file and modify these rather than the default settings to increase or stabilize training performance. To create a set of WallPongBrain hyperparameters:
- - Open up a file explorer window (a finder window on Mac) and navigate to where you saved the ML-Agents toolkit.
- - Find the trainer_config.yaml file in the yourpath/ml-agents/python folder.
- - Open the trainer_config.yaml file using a script and text editor (e.g., Visual Studio).
- - At the top of the file you will find the default hyperparameter list.
- - Either directly under this default list or at the end of the file create copy and past in the CatchBall, WallPong and Pong hyperparameters setttings in the trainer_config.yaml file included in this AiMULA getting Started GitHub repository
- - Save the file.
+The ML-Agents trainer_config.yaml file actually has a default set of hyperparameters than can be used ‘out-of-the-box’ so to speak, but it is always better to create your own brain/agent specific set of hyperparameters like we have done in the aiumla_config.yaml file.
  
 ### Set the Brain Type = External (Essential for Agent Training)
  - From the project Window, open up the corresponding game scene you wish to play (e.g., CatchBall, WallPong, Pong).
@@ -103,10 +97,15 @@ The ML-Agents trainer_config.yaml actually has a default set of hyperparameters 
 To run the PPO training processes, we need to run the ML-Agents training program learn.py from a command prompt. Here we assume that you have installed the ml-agents toolkit in a virtual (conda) environment called “ml-agents” using Anaconda. Although you can run the training process using a compiled (standalone) Unity application, which is beneficial if you want to run multiple training instances simultaneously, for the sake of simplicity here we will detail how to complete the training process by playing the game directly in the Unity Editor.
 
 #### Open up an Anaconda Prompt.
- - If you installed ML-Agents in a virtual environment, activate that virtual (conda) environment; e.g., enter the command: conda activate ml-agents
- - Change the directory to the python sub-directory of the ml-agents directory. e.g., enter the command: cd yourpath/ml-agents/python
+ - If you installed ML-Agents in a virtual environment, activate that virtual (conda) environment; e.g., enter the command: 
+ `conda activate ml-agents`
+ - Change the directory to the python sub-directory of the ml-agents directory. e.g., enter the command: 
+ `cd yourpath/ml-agents/python`
  - To start the learning/training process, call the ML-Agents learn.py script.
- - Enter the following command to start the training process: **python learn.py –run-id=gamenameTest1 –train**  and press ENTER.
+ -- If you are using the config files that comes with this repositroy and have moved a copy of it to the **...mlagent/config/** directory, type in the following command to start the training process and press ENTER: 
+ `mlagents-learn.py config/aiumla_config.yaml –run-id=gamenameTest1 –train`
+ -- If you are using the default trainer_config.yaml file that comes with Unity Ml-Agents, type in the following command to start the training process and press ENTER: '
+`mlagents-learn.py config/trainer_config.yaml –run-id=gamenameTest1 –train` 
  - Note that the –train command specifies that you are training an agent. The —run-id command specifies a a unique identifier for the Tensorflow checkpoint summary and model files generated during training. you can replace "gamenameTest1" with whatever run-id you want.
 
  - After the training settinsg appear in the Anaconda prompt window, the following line should appear: **Start training by pressing the Play button in the Unity Editor**. 
