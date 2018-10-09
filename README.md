@@ -83,7 +83,7 @@ The PPO process that comes with the ML-Agents toolkit can be used to train agent
 For ML-Agents, the PPO algorithm is implemented using Tensorflow. The learning process is run via the Python API that can communicate with both a compiled Unity application or the Unity Editor. This Python <-> Unity process means that you can use the provided PPO algorithm for RL, as well as write your own custom RL or ML algorithms.
 
 ### Setting the Training Hyperparameters
-Before executing the ML-Agents PPO training process, we first need to either (i) set the training hyperparameters in the trainer_config.yaml file or (ii) copy/move the aiumla_config.yaml file that comes with this repository into the `...mlagent/config/` directory. These hyperparameters include the size (number of nodes and layers) of the artificial neural network that will be employed for training, the size of the memory buffer used for training, the training batch size, the learning rate, the max number of training steps, etc. A detailed description of the hyperparameters that can be set in the ML-Agents trainer_config.yaml file can be found here: PPO Hyperparameters.
+Before executing the ML-Agents PPO training process, we first need to either (i) set the training hyperparameters in the trainer_config.yaml file or (ii) copy/move the aiumla_config.yaml file that comes with this repository into the **...mlagent/config/** directory. These hyperparameters include the size (number of nodes and layers) of the artificial neural network that will be employed for training, the size of the memory buffer used for training, the training batch size, the learning rate, the max number of training steps, etc. A detailed description of the hyperparameters that can be set in the ML-Agents trainer_config.yaml file can be found here: PPO Hyperparameters.
 
 The ML-Agents trainer_config.yaml file actually has a default set of hyperparameters than can be used ‘out-of-the-box’ so to speak, but it is always better to create your own brain/agent specific set of hyperparameters like we have done in the aiumla_config.yaml file.
  
@@ -98,14 +98,22 @@ To run the PPO training processes, we need to run the ML-Agents training program
 
 #### Open up an Anaconda Prompt.
  - If you installed ML-Agents in a virtual environment, activate that virtual (conda) environment; e.g., enter the command: 
+ 
  `conda activate ml-agents`
- - Change the directory to the python sub-directory of the ml-agents directory. e.g., enter the command: 
+ 
+ - Change the directory to the python sub-directory of the ml-agents directory. e.g., enter the command:
+ 
  `cd yourpath/ml-agents/python`
+ 
  - To start the learning/training process, call the ML-Agents learn.py script.
- -- If you are using the config files that comes with this repositroy and have moved a copy of it to the **...mlagent/config/** directory, type in the following command to start the training process and press ENTER: 
+ - If you are using the config files that comes with this repositroy and have moved a copy of it to the **...mlagent/config/** directory, type in the following command to start the training process and press ENTER:
+ 
  `mlagents-learn.py config/aiumla_config.yaml –run-id=gamenameTest1 –train`
- -- If you are using the default trainer_config.yaml file that comes with Unity Ml-Agents, type in the following command to start the training process and press ENTER: '
-`mlagents-learn.py config/trainer_config.yaml –run-id=gamenameTest1 –train` 
+ 
+ - If you are using the default trainer_config.yaml file that comes with Unity Ml-Agents, type in the following command to start the training process and press ENTER: '
+ 
+`mlagents-learn.py config/trainer_config.yaml –run-id=gamenameTest1 –train`
+
  - Note that the –train command specifies that you are training an agent. The —run-id command specifies a a unique identifier for the Tensorflow checkpoint summary and model files generated during training. you can replace "gamenameTest1" with whatever run-id you want.
 
  - After the training settinsg appear in the Anaconda prompt window, the following line should appear: **Start training by pressing the Play button in the Unity Editor**. 
