@@ -157,6 +157,6 @@ Please visit http://adventuresinunitymlagents.com/getting-started/ for realted t
 - executing the training process.
 - importing and testing the trained model.
 
-<img src="media/gsPostUnityMultiArenaScreenShot.png" width="860" height="500" />
+<img src="media/gsPostUnityMultiArenaScreenShot.PNG" width="860" height="500" />
 
 Further details on using the ML-Agents toolkit can be found here: https://github.com/Unity-Technologies/ml-agents/tree/master/docs
